@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Django</title>
+</head>
+
+<body>
+    <h1>Seja bem-vindo ao Django 🚀</h1>
+    <p>Esse é o início do seu projeto.</p>
+
+    {% comment %}
+    {# Esse é um exemplo de comentário de linha #}
+    No index.html, vamos usar a tag {% for %}.
+    Ela funciona quase igual ao for do Python,
+    mas precisa de um aviso de onde termina ({% endfor %}).
+    {% endcomment %}
+
+    <h2>Produtos em Destaque:</h2>
+    <ul>
+        {% for produto in produtos %}
+        <li>{{ produto.nome }} - R${{ produto.preco }} - <strong>Descrição: </strong> {{ produto.descricao }}</li>
+        {% if produto.foto %}
+        <li><img src="{{ produto.foto.url }}" alt="Foto de {{ produto.nome }}" width="150px"></li>
+        {% else %}
+        <li><img src="../media/produto-sem-imagem.gif" alt="Produto sem imagem" width="150px"></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
