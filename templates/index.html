@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Home - Django</title>
 </head>
 
 <body>
-    <h1>Seja bem-vindo ao Django 🚀</h1>
-    <p>Esse é o início do seu projeto.</p>
 
     {% comment %}
     {# Esse é um exemplo de comentário de linha #}
@@ -18,17 +18,50 @@
     mas precisa de um aviso de onde termina ({% endfor %}).
     {% endcomment %}
 
-    <h2>Produtos em Destaque:</h2>
-    <ul>
-        {% for produto in produtos %}
-        <li>{{ produto.nome }} - R${{ produto.preco }} - <strong>Descrição: </strong> {{ produto.descricao }}</li>
-        {% if produto.foto %}
-        <li><img src="{{ produto.foto.url }}" alt="Foto de {{ produto.nome }}" width="150px"></li>
-        {% else %}
-        <li><img src="../media/produto-sem-imagem.gif" alt="Produto sem imagem" width="150px"></li>
-        {% endif %}
-        {% endfor %}
-    </ul>
+    <div class="container mt-5">
+
+        <h2 class="mb-4 text-center">Nossos Produtos</h2>
+
+        <div class="row">
+
+            {% for produto in produtos %}
+
+            <div class="col-12 col-md-4 mb-4">
+
+                <div class="card shadow-sm h-100">
+
+                    {% if produto.foto %}
+                    <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}"
+                        style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <img src="/media/produto-sem-imagem.gif" class="card-img-top" alt="Sem foto"
+                        style="height: 200px; object-fit: cover;">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ produto.nome }}</h5>
+
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            R$ {{ produto.preco }}
+                        </h6>
+
+                        <p class="card-text">
+                            {{ produto.descricao|truncatewords:20 }}
+                        </p>
+
+                        <a href="#" class="btn btn-primary w-100">Ver Detalhes</a>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

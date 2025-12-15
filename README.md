@@ -29,3 +29,17 @@ Template:
 {% endblock contente %}
 
 a diferença entre MEDIA_ROOT e MEDIA_URL
+
+<!-- {% comment %}
+    <h2>Produtos em Destaque:</h2>
+    <ul>
+        {% for produto in produtos %}
+        <li>{{ produto.nome }} - R${{ produto.preco }} - <strong>Descrição: </strong> {{ produto.descricao }}</li>
+        {% if produto.foto %}
+        <li><img src="{{ produto.foto.url }}" alt="Foto de {{ produto.nome }}" width="150px"></li>
+        {% else %}
+        <li><img src="../media/produto-sem-imagem.gif" alt="Produto sem imagem" width="150px"></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endcomment %} -->

@@ -6,6 +6,7 @@ class Produto(models.Model):
     # id = models.BigAutoField(primary_key=True)
     nome = models.CharField(max_length=100)
     preco = models.DecimalField(max_digits=9, decimal_places=2)
+    marca = models.CharField(max_length=50, blank=True, null=True)
     descricao = models.TextField()
     # chave_estrangeira = models.ForeignKey(nome_classe, on_delete=models.CASCADE)
     # on_delete é uma regra de segurança para o db:
