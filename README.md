@@ -21,6 +21,7 @@ python manage.py makemigrations # Usar após cada mudança no db
 python manage.py migrate
 
 como usar o requirements.py?
+python -m pip install -r requirements.txt
 
 Template:
 
@@ -53,3 +54,22 @@ card-img-top: Faz a imagem encaixar perfeitamente no topo do cartão.
 style="object-fit: cover;": Isso é um truque de CSS inline para garantir que todas as fotos fiquem do mesmo tamanho, sem esticar ou amassar, mesmo que você tenha feito upload de fotos de tamanhos diferentes.
 
 truncatewords:20: Um filtro do Django que corta o texto se a descrição for muito longa, para não quebrar o layout.
+
+
+
+
+
+
+
+
+
+Esse erro é como o Django dizendo: "Ok, você quer usar o seu Usuario personalizado, mas quando eu for criar um Superusuário pelo terminal, quais perguntas eu devo fazer além do email e senha?"
+
+Como você definiu AUTH_USER_MODEL = 'usuarios.Usuario', o Django exige que essa classe tenha duas configurações obrigatórias que provavelmente estão faltando ou incompletas no código original do grupo.
+
+Vamos corrigir isso editando o arquivo usuarios/models.py.
+
+Passo 1: Ajustar o Modelo de Usuário
+Abra o arquivo usuarios/models.py. Você precisa adicionar os campos USERNAME_FIELD e REQUIRED_FIELDS dentro da classe Usuario.
+
+O código deve ficar parecido com isso (verifique se sua classe herda de AbstractBaseUser e PermissionsMixin para funcionar 100% com o Admin, mas para corrigir esse erro, basta adicionar as linhas indicadas):
