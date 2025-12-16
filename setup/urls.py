@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from home.views import home, sobre
+from home.views import home, sobre, detalhe_produto
 
 # Imports necessários para imagens
 from django.conf.urls.static import static
@@ -26,4 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('sobre/', sobre, name='sobre'),
+    path('produto/<int:id>', detalhe_produto, name='detalhe_produto'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # O "truque" para carregar imagens enquanto desenvolve

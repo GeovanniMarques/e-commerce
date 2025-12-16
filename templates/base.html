@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <style>
+        /*Ajuste de página para rodapé ficar fixo na parte debaixo */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">Rag Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Carrinho</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
+                </ul>
+
+                <form action="{% url 'home' %}" class="d-flex ms-3" method="GET">
+                    <input type="search" name="busca" placeholder="Qual produto você procura?" aria-label="Search" class="form-control me-2">
+                    <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        {% block conteudo%}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-light text-center py-3 mt-5">
+        <p class="mb-0">© 2025 Minha Loja - Desenvolvido por Tech Solutions</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -43,3 +43,13 @@ a diferença entre MEDIA_ROOT e MEDIA_URL
         {% endfor %}
     </ul>
     {% endcomment %} -->
+
+## Templates:
+
+card e card-body: Criam a caixa branca bonita.
+
+card-img-top: Faz a imagem encaixar perfeitamente no topo do cartão.
+
+style="object-fit: cover;": Isso é um truque de CSS inline para garantir que todas as fotos fiquem do mesmo tamanho, sem esticar ou amassar, mesmo que você tenha feito upload de fotos de tamanhos diferentes.
+
+truncatewords:20: Um filtro do Django que corta o texto se a descrição for muito longa, para não quebrar o layout.
